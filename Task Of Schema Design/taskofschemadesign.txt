@@ -1,0 +1,39 @@
+The schemfor food delivery app will have the following entities 
+
+1. Food
+The food entity will have the following attributes 
+FoodID
+Measuring Unit
+Quantity_Amount_PerUnit  // This filed escribes the quantity given per unit
+FoodName
+Availability
+Seasonal
+Price
+
+2.Employee For Delivery
+EmployeeId
+First Name
+Last Name
+Adddress
+Contact Number
+Vehicle ID // This is the primary key of vehicle table
+
+3.Vehicle
+Vehicle ID
+Vehicle Number
+Type Of Vehicle // This column indicates whether it is two wheeler or four wheeler .
+
+
+4.Client/User
+Client ID
+Client Adddress
+Client Contact Number
+
+
+5.Orders
+Food ID // This the Primary key of food table
+Quantity
+Amount
+Payment Mode
+Payment Status
+EmployeeId

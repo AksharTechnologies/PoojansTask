@@ -1,0 +1,171 @@
+{{!--
+<form method="POST" action="/login/loginview">
+    <div class="container">
+
+        <div>
+            <label for="userName">
+                <b>Username</b>
+            </label>
+            <input type="text" placeholder="Enter Username" name="userName" required>
+        </div>
+        <div>
+            <label for="userPassword">
+                <b>Password</b>
+            </label>
+            <input type="password" placeholder="Enter Password" name="userPassword" required>
+        </div>
+
+        <div>
+            <p>Login or Register with:</p>
+            <a href="/auth/facebook">
+                </span> Facebook</a>
+        </div>
+
+        <input type="submit">
+        </button>
+    </div>
+</form> --}}
+
+
+
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container">
+    <div id="loginbox" style="margin-top:50px; visibility:{{signinvisibility}} ; display:{{signindisplay}}" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <div class="panel-title">Sign In</div>
+            </div>
+
+            <div style="padding-top:30px" class="panel-body">
+
+                <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+
+                <form id="loginform" class="form" role="form" method="POST" action="/login/loginview">
+
+                    <div style="margin-bottom: 25px" class="input-group">
+                        <span class="input-group-addon">
+                            <i class="glyphicon glyphicon-user"></i>
+                        </span>
+                        <input id="login-username" type="text" class="form-control" name="email" value="" placeholder="Email">
+                    </div>
+
+                    <div style="margin-bottom: 25px" class="input-group">
+                        <span class="input-group-addon">
+                            <i class="glyphicon glyphicon-lock"></i>
+                        </span>
+                        <input id="login-password" type="password" class="form-control" name="password" placeholder="password">
+                    </div>
+
+                    <div style="margin-top:10px" class="form-group">
+                        <!-- Button -->
+                        <div class="col-sm-12 controls">
+                            <input type="submit" class="btn btn-success" value="Submit">
+                            <a id="btn-fblogin" href="/auth/facebook" class="btn btn-primary">Login with Facebook</a>
+
+                        </div>
+                        <br/>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12 control">
+                            <div style="border-top: 1px solid #e0dada; padding-top:15px; font-size:85%">
+                                Don't have an account!
+                                <a href="/login/signup" onClick="">
+                                    Sign Up Here
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        {{#if message}}
+         <div class="alert alert-success">
+            <strong>{{message}}</strong> 
+         </div>
+         {{/if}}
+
+        <ul class="list-group list-group-flush">
+            {{#each errors}}
+                <li class="list-group-item" style="background-color: rgb(255, 236, 239)"><strong>{{text}}</strong></li>
+            {{/each}}
+        </ul>
+    </div>
+
+    <br/>
+    <br/>
+    <div id="signupbox" style="display:none; margin-top:50px visibility:{{signupvisibility}} ; display:{{signupdisplay}}" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <div class="panel-title">Sign Up</div>
+                <div style="float:right; font-size: 85%; position: relative; top:-10px">
+                    <a id="signinlink" href="/login/signin">Sign In</a>
+                </div>
+            </div>
+            <div class="panel-body">
+                <form method="POST" action="/login/register">
+
+                    <div id="signupalert" style="display:none" class="alert alert-danger">
+                        <p>Error:</p>
+                        <span></span>
+                    </div>
+                    <div class="form-group">
+                        {{!--
+                        <label for="email" class="col-md-2" style="font-size: 12px">Email</label> --}}
+                        <div class="col-md-12" style="padding-bottom: 10px">
+                            <input type="text" class="form-control" name="email" placeholder="Email" value={{email}}>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {{!--
+                        <label for="firstname" class="col-md-2" style="font-size: 12px">First Name</label> --}}
+                        <div class="col-md-12" style="padding-bottom: 10px">
+                            <input type="text" class="form-control" name="firstname" placeholder="First Name" value={{firstname}}>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {{!--
+                        <label for="lastname" class="col-md-2" style="font-size: 12px">Last Name</label> --}}
+                        <div class="col-md-12" style="padding-bottom: 10px">
+                            <input type="text" class="form-control" name="lastname" placeholder="Last Name" value={{lastname}}>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {{!--
+                        <label for="password" class="col-md-2 control-label">Password</label> --}}
+                        <div class="col-md-12" style="padding-bottom: 10px">
+                            <input type="password" class="form-control" name="passwd" placeholder="Password">
+                        </div>
+                    </div>
+                    <br/>
+
+                    <div class="form-group">
+                        {{!--
+                        <label for="password" class="col-md-2 control-label">Password</label> --}}
+                        <div class="col-md-12" style="padding-bottom: 10px">
+                            <input type="password" class="form-control" name="checkpassword" placeholder="Repeat Password">
+                        </div>
+                    </div>
+                    <br/>
+
+                    <div class="form-group">
+                        <!-- Button -->
+                        <div class="col-md-9">
+                            <button id="btn-signup" type="submit" class="btn btn-info">
+                                <i class="icon-hand-right"></i> &nbsp Sign Up</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <ul class="list-group list-group-flush" style="background-color: lightpink">
+            {{#each errors}}
+            <li class="list-group-item" style="background-color: rgb(255, 236, 239)">{{text}}</li>
+            {{/each}}
+        </ul>
+
+        
+    </div>
+</div>
