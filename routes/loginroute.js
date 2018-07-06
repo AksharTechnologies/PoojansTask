@@ -134,6 +134,13 @@ router.post("/register", (req, res) => {
 
     var showsignup = true;
 
+    var regexEmail = /\S+@\S+\.\S+/;
+    var isValidEmail = regexEmail.test(req.body.email.toString().trim());
+
+    if(isValidEmail== false){
+        errors.push({ text: "Invalid Email" })
+    }
+
     if (req.body.email === '' || req.body.email === undefined) {
         errors.push({ text: "Email field is blank" })
     }
